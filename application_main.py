@@ -1,13 +1,26 @@
 import os
+import logging
+import logging.config
+from pyspark.sql import SparkSession
 from lib import DataManipulation, DataReader, Utils
 from pyspark.sql.functions import *
 
-if __name__ == '__main__':
+##Load the Logging Configuration File 
+logging.config.fileConfig(fname='/home/hadoop/pyspark_project/configs/logging_to_file.conf')
+
+
+
+
+
+
+
+def main():
     
     job_run_env = os.environ.get('ENVIRON')
     print(job_run_env)
     print("Creating Spark Session")
     spark = Utils.get_spark_session(job_run_env)
+    spark.sparkContext.setLogLevel('ERROR')
     print("Created Spark Session")
     orders_df = DataReader.read_orders(spark,job_run_env)
     orders_filtered = DataManipulation.filter_closed_orders(orders_df)
@@ -15,4 +28,11 @@ if __name__ == '__main__':
     joined_df = DataManipulation.join_orders_customers(orders_filtered,customers_df)
     aggregated_results = DataManipulation.count_orders_state(joined_df)
     aggregated_results.show()
-    print("end of main")
+    logging.info("end of main")
+    
+
+
+
+if __name__ == '__main__':
+    logging.info("Main method started......")
+    main()
