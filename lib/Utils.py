@@ -24,7 +24,8 @@ def get_spark_session(env):
                    .enableHiveSupport() \
                    .getOrCreate()
        except Exception as exp:
-              logging.error(str(exp),exc_info=True)
+              logger.error(str(exp),exc_info=True)
+              raise
        else:
               return spark
               

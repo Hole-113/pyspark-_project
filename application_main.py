@@ -15,20 +15,23 @@ logging.config.fileConfig(fname='/home/hadoop/pyspark_project/configs/logging_to
 
 
 def main():
+    try:
     
-    job_run_env = os.environ.get('ENVIRON')
-    print(job_run_env)
-    print("Creating Spark Session")
-    spark = Utils.get_spark_session(job_run_env)
-    spark.sparkContext.setLogLevel('ERROR')
-    print("Created Spark Session")
-    orders_df = DataReader.read_orders(spark,job_run_env)
-    orders_filtered = DataManipulation.filter_closed_orders(orders_df)
-    customers_df = DataReader.read_customers(spark,job_run_env)
-    joined_df = DataManipulation.join_orders_customers(orders_filtered,customers_df)
-    aggregated_results = DataManipulation.count_orders_state(joined_df)
-    aggregated_results.show()
-    logging.info("end of main")
+        job_run_env = os.environ.get('ENVIRON')
+        print(job_run_env)
+        print("Creating Spark Session")
+        spark = Utils.get_spark_session(job_run_env)
+        spark.sparkContext.setLogLevel('ERROR')
+        print("Created Spark Session")
+        orders_df = DataReader.read_orders(spark,job_run_env)
+        orders_filtered = DataManipulation.filter_closed_orders(orders_df)
+        customers_df = DataReader.read_customers(spark,job_run_env)
+        joined_df = DataManipulation.join_orders_customers(orders_filtered,customers_df)
+        aggregated_results = DataManipulation.count_orders_state(joined_df)
+        aggregated_results.show()
+        logging.info("end of main")
+    except Exception as exp:
+        logging.error(str(exp),exc_info=True)
     
 
 
