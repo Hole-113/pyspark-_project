@@ -8,10 +8,10 @@ def read_customers(spark,env):
     conf = ConfigReader.get_app_config(env)
     customers_file_path = conf["customers.file.path"]
     return spark.read \
-    .format("csv") \
-    .option("header", "true") \
-    .schema(get_customers_schema()) \
-    .load(customers_file_path)
+           .format("csv") \
+           .option("header", "true") \
+           .schema(get_customers_schema()) \
+           .load(customers_file_path)
 #defining orders schema
 def get_orders_schema():
     schema = "order_id int,order_date string,customer_id int,order_status string"
