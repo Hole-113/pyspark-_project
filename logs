@@ -1,8 +1,8 @@
-12-Jun-24 07:49:10 - root - INFO - Main method started......
-12-Jun-24 07:49:10 - root - INFO - LOCAL
-12-Jun-24 07:49:10 - root - INFO - Creating Spark Session
-12-Jun-24 07:49:10 - Utils - INFO - Environment variable is LOCAL
-12-Jun-24 07:49:12 - root - INFO - Created Spark Session
-12-Jun-24 07:49:13 - DataReader - INFO - read_customers() function is started
-12-Jun-24 07:49:13 - DataReader - INFO - get_customers_schema() function is started
-12-Jun-24 07:49:18 - root - INFO - end of main
+14-Jun-24 08:19:17 - root - INFO - Main method started......
+14-Jun-24 08:19:17 - root - INFO - LOCAL
+14-Jun-24 08:19:17 - root - INFO - Creating Spark Session
+14-Jun-24 08:19:17 - Utils - INFO - Environment variable is LOCAL
+14-Jun-24 08:19:19 - root - INFO - Created Spark Session
+14-Jun-24 08:19:21 - DataReader - INFO - read_customers() function is started
+14-Jun-24 08:19:21 - DataReader - INFO - get_customers_schema() function is started
+14-Jun-24 08:19:26 - root - INFO - end of main

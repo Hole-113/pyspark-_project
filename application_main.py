@@ -28,7 +28,9 @@ def main():
         customers_df = DataReader.read_customers(spark,job_run_env)
         joined_df = DataManipulation.join_orders_customers(orders_filtered,customers_df)
         aggregated_results = DataManipulation.count_orders_state(joined_df)
-        aggregated_results.show()
+        #aggregated_results.show()
+        new_customers=DataManipulation.count_of_customers(spark,orders_df)
+        new_customers.show()
         logging.info("end of main")
     except Exception as exp:
         logging.error(str(exp),exc_info=True)
