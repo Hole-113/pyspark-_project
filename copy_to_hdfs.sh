@@ -9,6 +9,8 @@ HDFS_ORDERS_PATH="/user/hadoop/orders/"
 HDFS_CUSTOMERS_PATH="/user/hadoop/customers/"
 
 # Copy files directly from S3 to HDFS
+hadoop fs -mkdir -p $HDFS_ORDERS_PATH
+hadoop fs -mkdir -p $HDFS_CUSTOMERS_PATH
 hdfs dfs -cp $S3_ORDERS_PATH $HDFS_ORDERS_PATH
 hdfs dfs -cp $S3_CUSTOMERS_PATH $HDFS_CUSTOMERS_PATH
 
